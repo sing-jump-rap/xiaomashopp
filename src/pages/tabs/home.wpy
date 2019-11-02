@@ -1,5 +1,6 @@
 <template>
     <view class="home">
+        <!-- 轮播图 -->
         <swiper indicator-dots circular>
             <swiper-item wx:for ={{swiperData}} wx:key="index">
                 <navigator url="{{item.navigator_url}}">
@@ -7,48 +8,28 @@
                 </navigator>
             </swiper-item>
         </swiper>
+
+        <!-- 分类 -->
+        <view class="cate_box">
+            <navigator 
+                hover-class="none"
+                url="/pages/tabs/cates" 
+                wx:for="{{cateData}}" 
+                wx:key="index"
+                open-type="{{item.open_type}}"
+                >
+                <image src="{{item.image_src}}"></image>
+            </navigator>
+        </view>
     </view>
 </template>
 
 <script>
 
 import wepy from 'wepy'
-
+import mixinHome from '@/mixins/tabs/home.js'
 export default class Home extends wepy.page {
-    data = {
-        // 存放轮播图数据
-        swiperData:[]
-    }
-
-    config = {
-    }
-
-    methods = {
-
-    }
-
-    //获取轮播图数据
-    async getSwiperData() {
-        const {data:res} = await wepy.request({
-            url:'https://uinav.com/api/public/v1/home/swiperdata',
-        })
-        if (res.meta.status!=200) {
-            //失败提示处理
-            return wepy.showToast({
-                title:'获取数据失败',
-                icon:'none'
-            })
-        }
-        this.swiperData = res.message
-        this.$apply()  
-    }
-
-    // 页面开始加载
-    onLoad() {
-        // 加载轮播图
-        this.getSwiperData()
-        
-    }
+   mixins = [mixinHome]
 }
 
 </script>
@@ -61,4 +42,16 @@ swiper{
     height: 100%;
   }
 }
+.cate_box {
+    display: flex;
+    navigator{
+      width:25%;
+      text-align: center;
+      padding: 40rpx 0rpx;
+      image{
+        width: 128rpx;
+        height: 140rpx;
+      }
+    }
+  }
 </style>
