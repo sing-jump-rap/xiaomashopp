@@ -15,6 +15,7 @@ export default class extends wepy.app {
       'pages/tabs/search',
       'pages/tabs/cart',
       'pages/tabs/my',
+      'pages/goods_detail/index'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -64,7 +65,8 @@ export default class extends wepy.app {
 
   constructor () {
     super()
-    this.use('requestfix')
+    this.use('requestfix'),
+    this.use('promisify')
   }
 
   onLaunch() {
