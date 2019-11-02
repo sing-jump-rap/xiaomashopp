@@ -27,6 +27,8 @@
 <script>
 
 import wepy from 'wepy'
+
+// 把抽离的逻辑引入
 import mixinHome from '@/mixins/tabs/home.js'
 export default class Home extends wepy.page {
    mixins = [mixinHome]

@@ -1,3 +1,4 @@
+// 抽离逻辑
 import wepy from 'wepy'
 
 export default class Home extends wepy.mixin {

@@ -1,3 +1,4 @@
+// 在index.wpy中全局导入这个用来封装方法的js
 import wepy from 'wepy'
 const baseUrl = 'https://uinav.com/api/public/v1'
 
