@@ -1,25 +1,37 @@
 <template>
-<view>订单</view>
+    <view class="cates_box">
+        <scroll-view class="left" scroll-y>
+                <van-sidebar>
+                        <van-sidebar-item 
+                        title="{{item.cat_name}}"
+                        wx:for="{{cateList}}"
+                        wx:key="index"
+                        />
+                </van-sidebar>
+        </scroll-view>
+    </view>
 </template>
 
 <script>
 
 import wepy from 'wepy'
-
+// 抽离逻辑
+import mix from '../../mixins/tabs/cates.js'
 export default class Home extends wepy.page {
-    data = {
-    }
-
-    config = {
-    }
-
-    methods = {
-
-    }
+    mixins = [mix]
 }
 
 </script>
 
 <style lang='less'>
-
+page{
+    height: 100%;
+}
+.cate_box{
+    height: 100%;
+    .left{
+        width: 85px;
+        height: 100%;
+    }
+}
 </style>
