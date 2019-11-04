@@ -6,14 +6,20 @@ export default class Home extends wepy.mixin {
         // 存放轮播图数据
         swiperData:[],
         // 存放分类数据
-        cateData:[]
+        cateData:[],
+        // 存放楼层数据
+        floorData:[]
     }
 
     config = {
     }
 
     methods = {
-
+        goGoodsDetail(url) {
+            wepy.navigateTo({
+                url
+            })
+        }
     }
 
     //获取轮播图数据
@@ -40,6 +46,17 @@ export default class Home extends wepy.mixin {
     }
 
 
+    //获取楼层数据
+    async getFloorData() {
+        const {data} = await wepy.get('/home/floordata')
+        if (data.meta.status != 200) {
+            return wepy.baseToaset()
+        }
+        this.floorData = data.message
+        this.$apply()
+    }
+
+
 
     // 页面开始加载
     onLoad() {
@@ -47,6 +64,8 @@ export default class Home extends wepy.mixin {
         this.getSwiperData()
         // 加载分类
         this.getCateData()
+        // 加载楼层
+        this.getFloorData()
         
     }
 }

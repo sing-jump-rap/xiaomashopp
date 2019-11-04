@@ -21,6 +21,23 @@
                 <image src="{{item.image_src}}"></image>
             </navigator>
         </view>
+
+        <!-- 楼层 -->
+        <view class="floor_box">
+            <view class="floor_item" wx:for = "{{floorData}}" wx:key="index">
+                <!-- 标题图片 -->
+                <image src="{{item.floor_title.image_src}}"></image>
+
+                <!-- 内容图片 -->
+                <view class="content_img">
+                    <image wx:for="{{item.product_list}}" 
+                           wx:key="index" 
+                           src="{{item.image_src}}"
+                           @tap="goGoodsDetail({{item.navigator_url}})"
+                           ></image>
+                </view>
+            </view>
+        </view>
     </view>
 </template>
 
@@ -56,4 +73,23 @@ swiper{
       }
     }
   }
+.floor_box{
+  .floor_item{
+    image{
+      height: 50rpx;
+      width: 640rpx;
+    }
+    .content_img{
+        image{
+            width: 128px;
+            height: 190rpx;
+            margin: 5px;
+            float: left;
+        }
+        image:nth-child(1){
+            height: 390rpx;
+        }
+    }
+  }
+}
 </style>

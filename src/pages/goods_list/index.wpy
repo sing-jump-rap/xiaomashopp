@@ -1,0 +1,30 @@
+<template>
+    楼层详情 商品列表
+</template>
+
+<script>
+
+import wepy from 'wepy'
+
+export default class Home extends wepy.page {
+    data = {
+    }
+
+    config = {
+    }
+
+    methods = {
+
+    }
+    onLoad(options) {
+        //设置onload的形参获取传递的参数
+        console.log(options);
+        
+    }
+}
+
+</script>
+
+<style lang='less'>
+
+</style>
